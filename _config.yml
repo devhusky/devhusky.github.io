@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: 醜捌怪的博客
 subtitle: ''
 description: ''
 keywords:
-author: John Doe
+author: 醜捌怪
 language: en
 timezone: ''
 
@@ -97,11 +97,11 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: next
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type: 'git'
+  type: git
   repo: git@github.com:devhusky/devhusky.github.io.git
-  branch: gh_pages
+  branch: master 
