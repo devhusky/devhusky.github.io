@@ -93,11 +93,11 @@ index_with_subtitle: false
 # Value before `||` delimeter is the target link.
 # Value after `||` delimeter is the name of FontAwesome icon. If icon (with or without delimeter) is not specified, question icon will be loaded.
 menu:
-  home: /||home
+  home: /|| home
   #about: /about/|| user
   tags: /tags/|| tags
   categories: /categories/|| th
-  archives: /archives/||archive
+  archives: /archives/|| archive
   #schedule: /schedule/ || calendar
   #sitemap: /sitemap.xml || sitemap
   #commonweal: /404/ || heartbeat
@@ -406,12 +406,12 @@ gitment:
   mint: true # RECOMMEND, A mint on Gitment, to support count, language and proxy_gateway
   count: true # Show comments count in post meta area
   lazy: false # Comments lazy loading with a button
-  cleanly: false # Hide 'Powered by ...' on footer, and more
+  cleanly: true # Hide 'Powered by ...' on footer, and more
   language: zh-Hans # Force language, or auto switch by theme
-  github_user: # MUST HAVE, Your Github ID
-  github_repo: blog-comments # MUST HAVE, The repo you use to store Gitment comments
+  github_user: devhusky # MUST HAVE, Your Github ID
+  github_repo: devhusky.github.io # MUST HAVE, The repo you use to store Gitment comments
   client_id: 635b7cd2c27103bfabd9 # MUST HAVE, Github client id for the Gitment
-  client_secret: 06dc31537cd6720a6808988b52663ef542d421b4 # EITHER this or proxy_gateway, Github access secret token for the Gitment
+  client_secret: 46e585c2bae1206fa16207c2caddfc53028cbc64 # EITHER this or proxy_gateway, Github access secret token for the Gitment
   proxy_gateway: # Address of api proxy, See: https://github.com/aimingoo/intersect
   redirect_protocol: # Protocol of redirect_uri with force_redirect_protocol when mint enabled
 
