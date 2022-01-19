@@ -4,16 +4,17 @@
 
 # Site
 title: 醜捌怪的博客
-subtitle: ''
+subtitle: '管中窥豹，吓我一跳'
 description: ''
-keywords:
+keywords: 'iOS, Shell, Flutter, Swift, 开发, 程序员, 问题'
 author: 醜捌怪
-language: en
+language: zh-Hans
 timezone: ''
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: https://github.com/devhusky/devhusky.github.io.git
+url: https://devhusky.github.io
+root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
