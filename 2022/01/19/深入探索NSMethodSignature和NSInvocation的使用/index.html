@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="iOS," />
 
 
 
@@ -79,13 +79,17 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="醜捌怪的博客">
-<meta property="og:url" content="https://devhusky.github.io/index.html">
+<meta name="description" content="NSMethodSignatureNSMethodSignature主要是方法的返回值和参数的类型信息的记录。 方法签名由方法返回类型的一个或多个字符组成，后跟隐式参数self和_cmd的字符串编码，还有零个或多个显式参数。可以使用methodReturnType和methodReturnLength属性确定字符串编码和返回类型的长度。numberOfArguments属性获取方法参数个数。可以使">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深入探索NSMethodSignature和NSInvocation的使用">
+<meta property="og:url" content="https://devhusky.github.io/2022/01/19/%E6%B7%B1%E5%85%A5%E6%8E%A2%E7%B4%A2NSMethodSignature%E5%92%8CNSInvocation%E7%9A%84%E4%BD%BF%E7%94%A8/index.html">
 <meta property="og:site_name" content="醜捌怪的博客">
+<meta property="og:description" content="NSMethodSignatureNSMethodSignature主要是方法的返回值和参数的类型信息的记录。 方法签名由方法返回类型的一个或多个字符组成，后跟隐式参数self和_cmd的字符串编码，还有零个或多个显式参数。可以使用methodReturnType和methodReturnLength属性确定字符串编码和返回类型的长度。numberOfArguments属性获取方法参数个数。可以使">
 <meta property="og:locale">
+<meta property="article:published_time" content="2022-01-19T06:52:32.221Z">
+<meta property="article:modified_time" content="2022-01-19T07:11:48.055Z">
 <meta property="article:author" content="醜捌怪">
-<meta property="article:tag" content="iOS, Shell, Flutter, Swift, 开发, 程序员, 问题">
+<meta property="article:tag" content="iOS">
 <meta name="twitter:card" content="summary">
 
 
@@ -116,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://devhusky.github.io/"/>
+  <link rel="canonical" href="https://devhusky.github.io/2022/01/19/深入探索NSMethodSignature和NSInvocation的使用/"/>
 
 
 
 
 
-  <title>醜捌怪的博客</title>
+  <title>深入探索NSMethodSignature和NSInvocation的使用 | 醜捌怪的博客</title>
   
 
 
@@ -141,8 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -269,9 +272,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -301,9 +304,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2022/01/19/%E6%B7%B1%E5%85%A5%E6%8E%A2%E7%B4%A2NSMethodSignature%E5%92%8CNSInvocation%E7%9A%84%E4%BD%BF%E7%94%A8/" itemprop="url">深入探索NSMethodSignature和NSInvocation的使用</a></h1>
+          <h1 class="post-title" itemprop="name headline">深入探索NSMethodSignature和NSInvocation的使用</h1>
         
 
         <div class="post-meta">
@@ -351,11 +352,26 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2022/01/19/%E6%B7%B1%E5%85%A5%E6%8E%A2%E7%B4%A2NSMethodSignature%E5%92%8CNSInvocation%E7%9A%84%E4%BD%BF%E7%94%A8/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2022/01/19/%E6%B7%B1%E5%85%A5%E6%8E%A2%E7%B4%A2NSMethodSignature%E5%92%8CNSInvocation%E7%9A%84%E4%BD%BF%E7%94%A8/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
           
 
           
           
 
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
           
 
           
@@ -375,9 +391,7 @@
       
 
       
-        
-          
-            <h2 id="NSMethodSignature"><a href="#NSMethodSignature" class="headerlink" title="NSMethodSignature"></a>NSMethodSignature</h2><p><strong>NSMethodSignature</strong>主要是方法的返回值和参数的类型信息的记录。</p>
+        <h2 id="NSMethodSignature"><a href="#NSMethodSignature" class="headerlink" title="NSMethodSignature"></a>NSMethodSignature</h2><p><strong>NSMethodSignature</strong>主要是方法的返回值和参数的类型信息的记录。</p>
 <p>方法签名由方法返回类型的一个或多个字符组成，后跟隐式参数<code>self</code>和<code>_cmd</code>的字符串编码，还有零个或多个显式参数。可以使用<code>methodReturnType</code>和<code>methodReturnLength</code>属性确定字符串编码和返回类型的长度。<code>numberOfArguments</code>属性获取方法参数个数。可以使用<code>getArgumentTypeAtIndex: </code>根据索引获取方法参数。</p>
 <p>例如，<strong>NSString</strong>实例方法<code>containsString:</code>有一个带有以下参数的方法签名:<br>@encode(BOOL)  (c)为返回类型<br>@encode(id) (@)为接收者(self)<br>@encode(SEL) (:)为选择器(_cmd)<br>@encode(NSString *) (@)为第一个显式参数</p>
 <h2 id="NSInvocation"><a href="#NSInvocation" class="headerlink" title="NSInvocation"></a>NSInvocation</h2><p><strong>NSInvocation</strong>对象用于在对象之间存储和转发消息。<strong>NSInvocation</strong>对象包含一个Objective-C消息的所有元素:目标、选择器、参数和返回值。每个元素都可以直接设置，当<strong>NSInvocation</strong>对象被分派时，返回值会自动设置。</p>
@@ -441,8 +455,6 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hy NO -2366665138710127672</span><br></pre></td></tr></table></figure>
 <p>可以看出，并非输出预期的结果。所以即便繁琐，也需要一一进行参数类型转换。</p>
 
-          
-        
       
     </div>
     
@@ -457,316 +469,36 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://devhusky.github.io/2022/01/18/Shell%E5%8F%98%E9%87%8F%E7%9A%84%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%E7%BB%83%E4%B9%A0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="醜捌怪的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2022/01/18/Shell%E5%8F%98%E9%87%8F%E7%9A%84%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%E7%BB%83%E4%B9%A0/" itemprop="url">Shell变量的高级用法（三）——字符串处理练习</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-01-18T21:39:44+08:00">
-                2022-01-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Shell%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
-                    <span itemprop="name">Shell学习笔记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
+            <a href="/tags/iOS/" rel="tag"># iOS</a>
           
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>需求描述：<br>变量string=”Bigdata process framework is Hadoop,Hadoop is an open source project”<br>执行脚本后，打印输出string字符串变量，并给出用户一下选项：</p>
-<p>(1)、打印string长度<br>(2)、删除字符串中所有的Hadoop<br>(3)、替换第一个Hadoop为Mapreduce<br>(4)、替换全部Hadoop为Mapreduce</p>
-<p>用户输入数字1|2|3|4，可以执行对应项的功能；输入q|Q则退出交互模式。</p>
-<p>思路分析：<br>1、将不同的功能模块划分，并编写函数<br>function print_tips<br>function len_of_string<br>function del_hadoop<br>function rep_hadoop_mapreduce_first<br>function rep_hadoop_mapreduce_all<br>2、实现第一步所定义的功能函数<br>3、程序主流程的设计</p>
-<p>完整脚本代码如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">string=&quot;Bigdata process framework is Hadoop,Hadoop is an open source project&quot;</span><br><span class="line"></span><br><span class="line">function print_tips &#123;</span><br><span class="line">    echo &quot;****************************************&quot;</span><br><span class="line">    echo &quot;(1)、打印string长度&quot;</span><br><span class="line">    echo &quot;(2)、删除字符串中所有的Hadoop&quot;</span><br><span class="line">    echo &quot;(3)、替换第一个Hadoop为Mapreduce&quot;</span><br><span class="line">    echo &quot;(4)、替换全部Hadoop为Mapreduce&quot;</span><br><span class="line">    echo &quot;****************************************&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function len_of_string &#123;</span><br><span class="line">    echo &quot;$&#123;#string&#125;&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function del_hadoop &#123;</span><br><span class="line">    echo &quot;$&#123;string//Hadoop/&#125;&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function rep_hadoop_mapreduce_first &#123;</span><br><span class="line">    echo &quot;$&#123;string/Hadoop/Mapreduce&#125;&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function rep_hadoop_mapreduce_all &#123;</span><br><span class="line">    echo &quot;$&#123;string//Hadoop/Mapreduce&#125;&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function main &#123;</span><br><span class="line">    while true; do</span><br><span class="line">        echo</span><br><span class="line">        echo &quot;【$&#123;string&#125;】&quot;</span><br><span class="line">        echo</span><br><span class="line">        print_tips</span><br><span class="line">        read -p &quot;Please input your choice(1|2|3|4|q|Q):&quot; choice</span><br><span class="line">        case $choice in</span><br><span class="line">            1) len_of_string ;;</span><br><span class="line">            2) del_hadoop ;;</span><br><span class="line">            3) rep_hadoop_mapreduce_first ;;</span><br><span class="line">            4) rep_hadoop_mapreduce_all ;;</span><br><span class="line">            q|Q) exit ;;</span><br><span class="line">            *) echo &quot;Error input&quot;</span><br><span class="line">        esac</span><br><span class="line">    done</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">main</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
       
 
       
       
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
       
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://devhusky.github.io/2022/01/18/Shell%E5%8F%98%E9%87%8F%E7%9A%84%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95%EF%BC%88%E4%BA%8C%EF%BC%89%E2%80%94%E2%80%94%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="醜捌怪的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2022/01/18/Shell%E5%8F%98%E9%87%8F%E7%9A%84%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95%EF%BC%88%E4%BA%8C%EF%BC%89%E2%80%94%E2%80%94%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/" itemprop="url">Shell变量的高级用法（二）——字符串处理</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-01-18T20:39:44+08:00">
-                2022-01-18
-              </time>
+              <a href="/2022/01/18/Shell%E5%8F%98%E9%87%8F%E7%9A%84%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%E7%BB%83%E4%B9%A0/" rel="next" title="Shell变量的高级用法（三）——字符串处理练习">
+                <i class="fa fa-chevron-left"></i> Shell变量的高级用法（三）——字符串处理练习
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Shell%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
-                    <span itemprop="name">Shell学习笔记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <h1 id="获取字符串长度"><a href="#获取字符串长度" class="headerlink" title="获取字符串长度"></a>获取字符串长度</h1><table>
-<thead>
-<tr>
-<th></th>
-<th>语法</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>方法一</td>
-<td>$</td>
-<td></td>
-</tr>
-</tbody></table>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -776,217 +508,11 @@
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://devhusky.github.io/2022/01/18/Shell%E5%8F%98%E9%87%8F%E7%9A%84%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E5%8F%98%E9%87%8F%E6%9B%BF%E6%8D%A2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="醜捌怪的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2022/01/18/Shell%E5%8F%98%E9%87%8F%E7%9A%84%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E5%8F%98%E9%87%8F%E6%9B%BF%E6%8D%A2/" itemprop="url">Shell变量的高级用法（一）——变量替换</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-01-18T19:39:44+08:00">
-                2022-01-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Shell%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
-                    <span itemprop="name">Shell学习笔记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="变量替换"><a href="#变量替换" class="headerlink" title="变量替换"></a>变量替换</h2><table>
-<thead>
-<tr>
-<th>语法</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>${变量名#匹配规则}</td>
-<td>从变量<code>开头</code>进行规则匹配，将符合最<code>短</code>的数据删除</td>
-</tr>
-<tr>
-<td>${变量名##匹配规则}</td>
-<td>从变量<code>开头</code>进行规则匹配，将符合最<code>长</code>的数据删除</td>
-</tr>
-<tr>
-<td>${变量名%匹配规则}</td>
-<td>从变量<code>尾部</code>进行规则匹配，将符合最<code>短</code>的数据删除</td>
-</tr>
-<tr>
-<td>${变量名%%匹配规则}</td>
-<td>从变量<code>尾部</code>进行规则匹配，将符合最<code>长</code>的数据删除</td>
-</tr>
-<tr>
-<td>${变量名/旧字符串/新字符串}</td>
-<td>变量内容符合旧字符串，则<code>第一个</code>旧字符串会被新字符串取代</td>
-</tr>
-<tr>
-<td>${变量名//旧字符串/新字符串}</td>
-<td>变量内容符合旧字符串，则<code>全部的</code>旧字符串会被新字符串取代</td>
-</tr>
-</tbody></table>
-<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>定义一个字符串变量<code>variable</code>，通过不同的替换语法对变量进程替换，并输入结果。</p>
-<blockquote>
-<p>➜  ~ variable=”I love you, Do you love me?”</p>
-</blockquote>
-<p>示例1：</p>
-<blockquote>
-<p>➜  ~ result1=${variable#*ov}<br>➜  ~ echo $result1<br>e you, Do you love me?</p>
-</blockquote>
-<p>匹配规则为<code>*ov</code>，最短符合匹配规则的字符串为<code>I lov</code>。</p>
-<p>示例2：</p>
-<blockquote>
-<p>➜  ~ result2=${variable##*ov}<br>➜  ~ echo $result2<br>e me?</p>
-</blockquote>
-<p>匹配规则为<code>*ov</code>，##使用贪婪匹配模式，将匹配到最长符合规则的字符串为<code>I love you, Do you lov</code>。</p>
-<p>示例3：</p>
-<blockquote>
-<p>➜  ~ result3=${variable%ov*}<br>➜  ~ echo $result3<br>I love you, Do you l</p>
-</blockquote>
-<p>匹配规则为<code>ov*</code>，从后往前最短符合匹配规则的字符串为<code>ov me?</code>。</p>
-<p>示例4：</p>
-<blockquote>
-<p>➜  ~ result4=${variable%ov*}<br>➜  ~ echo $result4<br>I l</p>
-</blockquote>
-<p>匹配规则为<code>ov*</code>，从后往前最短符合匹配规则的字符串为<code>ove you, Do you lov me?</code>。</p>
-<p>示例5：</p>
-<blockquote>
-<p>➜  ~ result5=${variable/love/LOVE}<br>➜  ~ echo $result5<br>I LOVE you, Do you love me?</p>
-</blockquote>
-<p>将字符串<code>love</code>替换成大写<code>LOVE</code>，只会替换从开头开始第一个匹配到的<code>love</code>。</p>
-<p>示例6：</p>
-<blockquote>
-<p>➜  ~ result6=${variable//love/LOVE}<br>➜  ~ echo $result6<br>I LOVE you, Do you LOVE me?</p>
-</blockquote>
-<p>将字符串<code>love</code>替换成大写<code>LOVE</code>，将匹配到的旧字符串<code>love</code>全部替换成新字符串<code>LOVE</code>。</p>
-
-          
-        
+    <div class="post-spread">
       
     </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
 
 
           </div>
@@ -994,6 +520,17 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
 
         </div>
         
@@ -1014,8 +551,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -1075,6 +621,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#NSMethodSignature"><span class="nav-number">1.</span> <span class="nav-text">NSMethodSignature</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NSInvocation"><span class="nav-number">2.</span> <span class="nav-text">NSInvocation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A1%A5%E5%85%85"><span class="nav-number">4.</span> <span class="nav-text">补充</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1234,6 +796,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -1280,6 +846,30 @@
 
     
 
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: '',
+            repo: 'blog-comments',
+            
+            lang: "zh-Hans" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '46e585c2bae1206fa16207c2caddfc53028cbc64',
+            
+                client_id: '635b7cd2c27103bfabd9'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
     
 
 
