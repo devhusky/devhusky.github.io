@@ -1048,6 +1048,213 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://devhusky.github.io/2022/01/18/helloworld/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="醜捌怪的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2022/01/18/helloworld/" itemprop="url">Shell变量的高级用法（一）——变量替换</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-01-18T19:39:44+08:00">
+                2022-01-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Shell%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">Shell学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="变量替换"><a href="#变量替换" class="headerlink" title="变量替换"></a>变量替换</h2><table>
+<thead>
+<tr>
+<th>语法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>${变量名#匹配规则}</td>
+<td>从变量<code>开头</code>进行规则匹配，将符合最<code>短</code>的数据删除</td>
+</tr>
+<tr>
+<td>${变量名##匹配规则}</td>
+<td>从变量<code>开头</code>进行规则匹配，将符合最<code>长</code>的数据删除</td>
+</tr>
+<tr>
+<td>${变量名%匹配规则}</td>
+<td>从变量<code>尾部</code>进行规则匹配，将符合最<code>短</code>的数据删除</td>
+</tr>
+<tr>
+<td>${变量名%%匹配规则}</td>
+<td>从变量<code>尾部</code>进行规则匹配，将符合最<code>长</code>的数据删除</td>
+</tr>
+<tr>
+<td>${变量名/旧字符串/新字符串}</td>
+<td>变量内容符合旧字符串，则<code>第一个</code>旧字符串会被新字符串取代</td>
+</tr>
+<tr>
+<td>${变量名//旧字符串/新字符串}</td>
+<td>变量内容符合旧字符串，则<code>全部的</code>旧字符串会被新字符串取代</td>
+</tr>
+</tbody></table>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>定义一个字符串变量<code>variable</code>，通过不同的替换语法对变量进程替换，并输入结果。</p>
+<blockquote>
+<p>➜  ~ variable=&quot;I love you, Do you love me?&quot;</p>
+</blockquote>
+<p>示例1：</p>
+<blockquote>
+<p>➜  ~ result1=${variable#*ov}<br>➜  ~ echo $result1<br>e you, Do you love me?</p>
+</blockquote>
+<p>匹配规则为<code>*ov</code>，最短符合匹配规则的字符串为<code>I lov</code>。</p>
+<p>示例2：</p>
+<blockquote>
+<p>➜  ~ result2=${variable##*ov}<br>➜  ~ echo $result2<br>e me?</p>
+</blockquote>
+<p>匹配规则为<code>*ov</code>，##使用贪婪匹配模式，将匹配到最长符合规则的字符串为<code>I love you, Do you lov</code>。</p>
+<p>示例3：</p>
+<blockquote>
+<p>➜  ~ result3=${variable%ov*}<br>➜  ~ echo $result3<br>I love you, Do you l</p>
+</blockquote>
+<p>匹配规则为<code>ov*</code>，从后往前最短符合匹配规则的字符串为<code>ov me?</code>。</p>
+<p>示例4：</p>
+<blockquote>
+<p>➜  ~ result4=${variable%ov*}<br>➜  ~ echo $result4<br>I l</p>
+</blockquote>
+<p>匹配规则为<code>ov*</code>，从后往前最短符合匹配规则的字符串为<code>ove you, Do you lov me?</code>。</p>
+<p>示例5：</p>
+<blockquote>
+<p>➜  ~ result5=${variable/love/LOVE}<br>➜  ~ echo $result5<br>I LOVE you, Do you love me?</p>
+</blockquote>
+<p>将字符串<code>love</code>替换成大写<code>LOVE</code>，只会替换从开头开始第一个匹配到的<code>love</code>。</p>
+<p>示例6：</p>
+<blockquote>
+<p>➜  ~ result6=${variable//love/LOVE}<br>➜  ~ echo $result6<br>I LOVE you, Do you LOVE me?</p>
+</blockquote>
+<p>将字符串<code>love</code>替换成大写<code>LOVE</code>，将匹配到的旧字符串<code>love</code>全部替换成新字符串<code>LOVE</code>。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -1094,7 +1301,7 @@
               
                 <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
