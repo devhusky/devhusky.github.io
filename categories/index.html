@@ -609,11 +609,11 @@
 
 
   <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-
+  <script src="https://cdn.bootcdn.net/ajax/libs/blueimp-md5/2.19.0/js/md5.js"></script>
   <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
    <script type="text/javascript">
         var gitalk = new Gitalk({
-          id: location.pathname,
+          id: md5(location.pathname),
           clientID: '635b7cd2c27103bfabd9',
           clientSecret: '46e585c2bae1206fa16207c2caddfc53028cbc64',
           repo: 'devhusky.github.io',
