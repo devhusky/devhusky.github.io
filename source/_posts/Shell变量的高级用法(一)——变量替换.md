@@ -1,5 +1,5 @@
 ---
-title: Shell变量的高级用法（一）——变量替换
+title: Shell变量的高级用法(一)——变量替换
 date: 2022-01-18 19:39:44
 categories:
     - Shell学习笔记

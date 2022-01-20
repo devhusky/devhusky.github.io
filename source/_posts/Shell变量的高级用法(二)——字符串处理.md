@@ -1,5 +1,5 @@
 ---
-title: Shell变量的高级用法（二）——字符串处理
+title: Shell变量的高级用法(二)——字符串处理
 date: 2022-01-18 20:39:44
 categories:
     - Shell学习笔记
