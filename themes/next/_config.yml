@@ -414,7 +414,16 @@ gitment:
   client_secret: <client_secret> # EITHER this or proxy_gateway, Github access secret token for the Gitment
   proxy_gateway: # Address of api proxy, See: https://github.com/aimingoo/intersect
   redirect_protocol: # Protocol of redirect_uri with force_redirect_protocol when mint enabled
-
+  
+# Gitalk
+gitalk:
+  enable: true
+  language: zh-Hans # Force language, or auto switch by theme
+  github_user: devhusky # MUST HAVE, Your Github ID
+  github_repo: devhusky.github.io # MUST HAVE, The repo you use to store Gitment comments
+  client_id: <client_id> # MUST HAVE, Github client id for the Gitment
+  client_secret: <client_secret> # EITHER this or proxy_gateway, Github access secret token for the Gitment
+  distraction_free_mode: true
 # Baidu Share
 # Available value:
 #    button | slide
