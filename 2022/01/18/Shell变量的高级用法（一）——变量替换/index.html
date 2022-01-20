@@ -352,16 +352,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2022/01/18/Shell%E5%8F%98%E9%87%8F%E7%9A%84%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E5%8F%98%E9%87%8F%E6%9B%BF%E6%8D%A2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2022/01/18/Shell%E5%8F%98%E9%87%8F%E7%9A%84%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E5%8F%98%E9%87%8F%E6%9B%BF%E6%8D%A2/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -526,11 +516,8 @@
 
   
     <div class="comments" id="comments">
-      
-        <div id="gitment-container"></div>
-      
+      <div id="gitalk-container"></div>
     </div>
-
   
 
 
@@ -839,50 +826,26 @@
 
 
 
-<!-- LOCAL: You can save these files to your site and update links -->
-    
-        
-        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
-        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
-    
-<!-- END LOCAL -->
-
-    
-      <style>
-        a.gitment-editor-footer-tip { display: none; }
-        .gitment-container.gitment-footer-container { display: none; }
-      </style>
-    
-
-    
-      <script type="text/javascript">
-      function renderGitment(){
-        var gitment = new Gitmint({
-            id: window.location.pathname, 
-            owner: 'devhusky',
-            repo: 'devhusky.github.io',
-            
-            lang: "zh-Hans" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
-            
-            oauth: {
-            
-            
-                client_secret: '46e585c2bae1206fa16207c2caddfc53028cbc64',
-            
-                client_id: '635b7cd2c27103bfabd9'
-            }});
-        gitment.render('gitment-container');
-      }
-
-      
-      renderGitment();
-      
-      </script>
-    
 
 
 
 
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          id: location.pathname,
+          clientID: '635b7cd2c27103bfabd9',
+          clientSecret: '',
+          repo: 'devhusky.github.io',
+          owner: 'devhusky',
+          admin: ['devhusky'],
+          distractionFreeMode: 'true'
+        })
+        gitalk.render('gitalk-container')
+       </script>
 
 
 
