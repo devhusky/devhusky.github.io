@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>Shell变量的高级用法（一）——变量替换</title>
-    <url>/2022/01/18/Shell%E5%8F%98%E9%87%8F%E7%9A%84%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E5%8F%98%E9%87%8F%E6%9B%BF%E6%8D%A2/</url>
+    <url>/2022/01/18/Shell%E5%8F%98%E9%87%8F%E7%9A%84%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95(%E4%B8%80)%E2%80%94%E2%80%94%E5%8F%98%E9%87%8F%E6%9B%BF%E6%8D%A2/</url>
     <content><![CDATA[<h2 id="变量替换"><a href="#变量替换" class="headerlink" title="变量替换"></a>变量替换</h2><table>
 <thead>
 <tr>
@@ -79,7 +79,7 @@
   </entry>
   <entry>
     <title>Shell变量的高级用法（三）——字符串处理练习</title>
-    <url>/2022/01/18/Shell%E5%8F%98%E9%87%8F%E7%9A%84%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%E7%BB%83%E4%B9%A0/</url>
+    <url>/2022/01/18/Shell%E5%8F%98%E9%87%8F%E7%9A%84%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95(%E4%B8%89)%E2%80%94%E2%80%94%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%E7%BB%83%E4%B9%A0/</url>
     <content><![CDATA[<p>需求描述：<br>变量string=&quot;Bigdata process framework is Hadoop,Hadoop is an open source project&quot;<br>执行脚本后，打印输出string字符串变量，并给出用户一下选项：</p>
 <p>(1)、打印string长度<br>(2)、删除字符串中所有的Hadoop<br>(3)、替换第一个Hadoop为Mapreduce<br>(4)、替换全部Hadoop为Mapreduce</p>
 <p>用户输入数字1|2|3|4，可以执行对应项的功能；输入q|Q则退出交互模式。</p>
@@ -96,7 +96,7 @@
   </entry>
   <entry>
     <title>Shell变量的高级用法（二）——字符串处理</title>
-    <url>/2022/01/18/Shell%E5%8F%98%E9%87%8F%E7%9A%84%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95%EF%BC%88%E4%BA%8C%EF%BC%89%E2%80%94%E2%80%94%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/</url>
+    <url>/2022/01/18/Shell%E5%8F%98%E9%87%8F%E7%9A%84%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95(%E4%BA%8C)%E2%80%94%E2%80%94%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/</url>
     <content><![CDATA[<h2 id="获取字符串长度"><a href="#获取字符串长度" class="headerlink" title="获取字符串长度"></a>获取字符串长度</h2><table>
 <thead>
 <tr>
