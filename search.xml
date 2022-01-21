@@ -257,4 +257,61 @@
         <tag>iOS</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Shell变量的高级用法(四)——命令替换</title>
+    <url>/2022/01/21/Shell%E5%8F%98%E9%87%8F%E7%9A%84%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95(%E5%9B%9B)%E2%80%94%E2%80%94%E5%91%BD%E4%BB%A4%E6%9B%BF%E6%8D%A2/</url>
+    <content><![CDATA[<h1 id="命令替换"><a href="#命令替换" class="headerlink" title="命令替换"></a>命令替换</h1><table>
+<thead>
+<tr>
+<th></th>
+<th>语法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>方法一</td>
+<td>`command`</td>
+<td>无</td>
+</tr>
+<tr>
+<td>方法二</td>
+<td>$(command)</td>
+<td>无</td>
+</tr>
+</tbody></table>
+<p>说明：<code>命令替换</code>是指将<code>命令</code>的输出结果赋值给某个变量。``和$()两者是等价的。<br>注意：$(())与$()不是同一个东西，比较容易混淆。$(())主要用来进行整数运算，包括加减乘除，引用变量前面可以加$，也可以不加$。</p>
+<h1 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h1><p><strong>例子1：</strong>获取系统的所有用户并输出。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">index=1</span><br><span class="line">for user in `cat /etc/passwd | cut -d &quot;:&quot; -f 1`</span><br><span class="line">do</span><br><span class="line">	echo &quot;This is $index user: $user&quot;</span><br><span class="line">	index=$(($index + 1))</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<blockquote>
+<p>This is 1 user: User<br>This is 2 user: Database<br>This is 3 user: Note<br>This is 4 user: that<br>......</p>
+</blockquote>
+<p>这里<code>index=$(($index + 1))</code>并不是命令替换，而是整数运算。<code>cut</code>命令对输入的字符进行分割，<code>-d &quot;:&quot;</code>表示<code>:</code>为分割符分割成多个子串。<code>-f 1</code>表示获取分割子串中的第一个。</p>
+<p><strong>例子2：</strong>根据系统时间计算今年或明年。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ echo &quot;This is $(($(date +%Y) + 1)) year&quot;</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<blockquote>
+<p>This is 2023 year</p>
+</blockquote>
+<p><strong>例子3：</strong>根据系统时间获取今年还剩下多少星期，已经过了多少星期。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ echo &quot;This year have passed $(($(date +%j) / 7)) weaks&quot;</span><br><span class="line">$ echo &quot;This is $(((365 - $(date +%j)) / 7)) days before new year&quot;</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<blockquote>
+<p>This year have passed 3 weaks<br>This is 49 days before new year</p>
+</blockquote>
+<p><strong>例子4：</strong>判定nginx进程是否存在，若不存在则自动拉起该进程。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nginx_process_num=$(ps -ef | grep nginx | grep -v grep | wc -l)</span><br><span class="line">if [ $nginx_process_num -eq 0 ]; then</span><br><span class="line">	systemctl start nginx</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+<p>这里将<code>ps -ef | grep nginx | grep -v grep | wc -l</code>命令执行之后的结果赋值给<code>nginx_process_num</code>变量。</p>
+]]></content>
+      <categories>
+        <category>Shell学习笔记</category>
+      </categories>
+      <tags>
+        <tag>shell</tag>
+      </tags>
+  </entry>
 </search>

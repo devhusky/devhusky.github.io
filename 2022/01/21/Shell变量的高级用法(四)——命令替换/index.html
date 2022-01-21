@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="shell," />
 
 
 
@@ -79,13 +79,17 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="醜捌怪的博客">
-<meta property="og:url" content="https://devhusky.github.io/tags/iOS/index.html">
+<meta name="description" content="命令替换    语法 说明    方法一 &#96;command&#96; 无   方法二 $(command) 无   说明：命令替换是指将命令的输出结果赋值给某个变量。&#96;&#96;和$()两者是等价的。注意：$(())与$()不是同一个东西，比较容易混淆。$(())主要用来进行整数运算，包括加减乘除，引用变量前面可以加$，也可以不加$。 示例例子1：获取系统的所有用户并输出。 1234567#!&#x2F;bin&#x2F;bashi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Shell变量的高级用法(四)——命令替换">
+<meta property="og:url" content="https://devhusky.github.io/2022/01/21/Shell%E5%8F%98%E9%87%8F%E7%9A%84%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95(%E5%9B%9B)%E2%80%94%E2%80%94%E5%91%BD%E4%BB%A4%E6%9B%BF%E6%8D%A2/index.html">
 <meta property="og:site_name" content="醜捌怪的博客">
+<meta property="og:description" content="命令替换    语法 说明    方法一 &#96;command&#96; 无   方法二 $(command) 无   说明：命令替换是指将命令的输出结果赋值给某个变量。&#96;&#96;和$()两者是等价的。注意：$(())与$()不是同一个东西，比较容易混淆。$(())主要用来进行整数运算，包括加减乘除，引用变量前面可以加$，也可以不加$。 示例例子1：获取系统的所有用户并输出。 1234567#!&#x2F;bin&#x2F;bashi">
 <meta property="og:locale">
+<meta property="article:published_time" content="2022-01-21T09:20:44.000Z">
+<meta property="article:modified_time" content="2022-01-21T09:34:42.113Z">
 <meta property="article:author" content="醜捌怪">
-<meta property="article:tag" content="iOS, Shell, Flutter, Swift, 开发, 程序员, 问题">
+<meta property="article:tag" content="shell">
 <meta name="twitter:card" content="summary">
 
 
@@ -116,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://devhusky.github.io/tags/iOS/"/>
+  <link rel="canonical" href="https://devhusky.github.io/2022/01/21/Shell变量的高级用法(四)——命令替换/"/>
 
 
 
 
 
-  <title>标签: iOS | 醜捌怪的博客</title>
+  <title>Shell变量的高级用法(四)——命令替换 | 醜捌怪的博客</title>
   
 
 
@@ -141,7 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -269,54 +273,237 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>iOS<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://devhusky.github.io/2022/01/21/Shell%E5%8F%98%E9%87%8F%E7%9A%84%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95(%E5%9B%9B)%E2%80%94%E2%80%94%E5%91%BD%E4%BB%A4%E6%9B%BF%E6%8D%A2/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="醜捌怪的博客">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2022/01/19/%E6%B7%B1%E5%85%A5%E6%8E%A2%E7%B4%A2NSMethodSignature%E5%92%8CNSInvocation%E7%9A%84%E4%BD%BF%E7%94%A8/" itemprop="url">
-              
-                <span itemprop="name">深入探索NSMethodSignature和NSInvocation的使用</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Shell变量的高级用法(四)——命令替换</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2022-01-19T14:52:32+08:00"
-              content="2022-01-19" >
-          01-19
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-01-21T17:20:44+08:00">
+                2022-01-21
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Shell%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">Shell学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="命令替换"><a href="#命令替换" class="headerlink" title="命令替换"></a>命令替换</h1><table>
+<thead>
+<tr>
+<th></th>
+<th>语法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>方法一</td>
+<td>`command`</td>
+<td>无</td>
+</tr>
+<tr>
+<td>方法二</td>
+<td>$(command)</td>
+<td>无</td>
+</tr>
+</tbody></table>
+<p>说明：<code>命令替换</code>是指将<code>命令</code>的输出结果赋值给某个变量。``和$()两者是等价的。<br>注意：$(())与$()不是同一个东西，比较容易混淆。$(())主要用来进行整数运算，包括加减乘除，引用变量前面可以加$，也可以不加$。</p>
+<h1 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h1><p><strong>例子1：</strong>获取系统的所有用户并输出。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">index=1</span><br><span class="line">for user in `cat /etc/passwd | cut -d &quot;:&quot; -f 1`</span><br><span class="line">do</span><br><span class="line">	echo &quot;This is $index user: $user&quot;</span><br><span class="line">	index=$(($index + 1))</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<blockquote>
+<p>This is 1 user: User<br>This is 2 user: Database<br>This is 3 user: Note<br>This is 4 user: that<br>......</p>
+</blockquote>
+<p>这里<code>index=$(($index + 1))</code>并不是命令替换，而是整数运算。<code>cut</code>命令对输入的字符进行分割，<code>-d &quot;:&quot;</code>表示<code>:</code>为分割符分割成多个子串。<code>-f 1</code>表示获取分割子串中的第一个。</p>
+<p><strong>例子2：</strong>根据系统时间计算今年或明年。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ echo &quot;This is $(($(date +%Y) + 1)) year&quot;</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<blockquote>
+<p>This is 2023 year</p>
+</blockquote>
+<p><strong>例子3：</strong>根据系统时间获取今年还剩下多少星期，已经过了多少星期。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ echo &quot;This year have passed $(($(date +%j) / 7)) weaks&quot;</span><br><span class="line">$ echo &quot;This is $(((365 - $(date +%j)) / 7)) days before new year&quot;</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<blockquote>
+<p>This year have passed 3 weaks<br>This is 49 days before new year</p>
+</blockquote>
+<p><strong>例子4：</strong>判定nginx进程是否存在，若不存在则自动拉起该进程。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nginx_process_num=$(ps -ef | grep nginx | grep -v grep | wc -l)</span><br><span class="line">if [ $nginx_process_num -eq 0 ]; then</span><br><span class="line">	systemctl start nginx</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+<p>这里将<code>ps -ef | grep nginx | grep -v grep | wc -l</code>命令执行之后的结果赋值给<code>nginx_process_num</code>变量。</p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    醜捌怪
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://devhusky.github.io/2022/01/21/Shell%E5%8F%98%E9%87%8F%E7%9A%84%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95(%E5%9B%9B)%E2%80%94%E2%80%94%E5%91%BD%E4%BB%A4%E6%9B%BF%E6%8D%A2/" title="Shell变量的高级用法(四)——命令替换">https://devhusky.github.io/2022/01/21/Shell%E5%8F%98%E9%87%8F%E7%9A%84%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95(%E5%9B%9B)%E2%80%94%E2%80%94%E5%91%BD%E4%BB%A4%E6%9B%BF%E6%8D%A2/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/shell/" rel="tag"># shell</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2022/01/19/%E6%B7%B1%E5%85%A5%E6%8E%A2%E7%B4%A2NSMethodSignature%E5%92%8CNSInvocation%E7%9A%84%E4%BD%BF%E7%94%A8/" rel="next" title="深入探索NSMethodSignature和NSInvocation的使用">
+                <i class="fa fa-chevron-left"></i> 深入探索NSMethodSignature和NSInvocation的使用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -324,6 +511,14 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="gitalk-container"></div>
+    </div>
+  
+
+
 
         </div>
         
@@ -344,8 +539,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -405,6 +609,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E6%9B%BF%E6%8D%A2"><span class="nav-number">1.</span> <span class="nav-text">命令替换</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B"><span class="nav-number">2.</span> <span class="nav-text">示例</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -564,6 +784,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -604,6 +828,22 @@
 
 
 
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://cdn.bootcdn.net/ajax/libs/blueimp-md5/2.19.0/js/md5.js"></script>
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          id: md5(location.pathname),
+          clientID: '635b7cd2c27103bfabd9',
+          clientSecret: '46e585c2bae1206fa16207c2caddfc53028cbc64',
+          repo: 'devhusky.github.io',
+          owner: 'devhusky',
+          admin: ['devhusky'],
+          distractionFreeMode: 'true'
+        })
+        gitalk.render('gitalk-container')
+       </script>
 
 
 
