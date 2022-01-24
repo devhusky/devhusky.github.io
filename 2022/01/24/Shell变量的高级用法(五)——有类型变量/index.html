@@ -87,7 +87,7 @@
 <meta property="og:description" content="declare和typeset命令 declare命令和typeset命令两者等价 declare命令和typeset命令都是用来定义变量类型的  declare命令参数表   参数 含义    -r 将变量设为只读   -i 将变量设为整数   -a 将变量定义为数组   -f 显示此脚本前定义过的所有函数及内容   -F 仅显示此脚本前定义过的函数名   -x 将变量声明为环境变量   取消声">
 <meta property="og:locale">
 <meta property="article:published_time" content="2022-01-24T08:50:23.000Z">
-<meta property="article:modified_time" content="2022-01-24T12:00:17.820Z">
+<meta property="article:modified_time" content="2022-01-24T12:12:16.696Z">
 <meta property="article:author" content="醜捌怪">
 <meta property="article:tag" content="shell">
 <meta name="twitter:card" content="summary">
@@ -467,8 +467,39 @@
 </blockquote>
 <p>获取数组元素个数</p>
 <blockquote>
-<p>➜  ~ echo $</p>
+<p>➜  ~ echo ${&#35;array}<br>4</p>
 </blockquote>
+<p>数组内下标索引为1的元素长度</p>
+<blockquote>
+<p>➜  ~ echo ${&#35;array[1]}<br>5</p>
+</blockquote>
+<p>给数组下标为1的元素赋值为&quot;huang&quot;</p>
+<blockquote>
+<p>➜  ~ array[1]=&quot;huang&quot;<br>➜  ~ echo $array<br>huang mike kobe jordan</p>
+</blockquote>
+<p>在数组尾部添加一个新元素</p>
+<blockquote>
+<p>➜  ~ array[10]=&quot;zhou&quot;<br>➜  ~ echo $array<br>huang mike kobe jordan zhou</p>
+</blockquote>
+<p>清空整个数组</p>
+<blockquote>
+<p>➜  ~ unset array<br>➜  ~ echo $array<br>&lt;空&gt;</p>
+</blockquote>
+<p><strong>例子6：</strong>声明环境变量<br>终端中声明一个变量num5</p>
+<blockquote>
+<p>➜  ~ num5=30<br>➜  ~ echo $num5<br>30</p>
+</blockquote>
+<p>在test.sh脚本文件中引用变量num5</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">echo $num5</span><br></pre></td></tr></table></figure>
+<p>执行脚本</p>
+<blockquote>
+<p>➜  ~  sh test.sh<br>&lt;空&gt;</p>
+</blockquote>
+<p>因为num5不是环境变量，所以在test.sh脚本文件中无法访问。<br>将num5声明为环境变量</p>
+<blockquote>
+<p>➜  ~ declare -x num5<br>➜  ~ sh test.sh<br>30</p>
+</blockquote>
+<p>执行test.sh脚本，输出了num5变量的值。</p>
 
       
     </div>
