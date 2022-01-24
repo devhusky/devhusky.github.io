@@ -314,4 +314,103 @@
         <tag>shell</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Shell变量的高级用法(五)——有类型变量</title>
+    <url>/2022/01/24/Shell%E5%8F%98%E9%87%8F%E7%9A%84%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95(%E4%BA%94)%E2%80%94%E2%80%94%E6%9C%89%E7%B1%BB%E5%9E%8B%E5%8F%98%E9%87%8F/</url>
+    <content><![CDATA[<h1 id="declare和typeset命令"><a href="#declare和typeset命令" class="headerlink" title="declare和typeset命令"></a>declare和typeset命令</h1><ul>
+<li>declare命令和typeset命令两者等价</li>
+<li>declare命令和typeset命令都是用来定义变量类型的</li>
+</ul>
+<h1 id="declare命令参数表"><a href="#declare命令参数表" class="headerlink" title="declare命令参数表"></a>declare命令参数表</h1><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-r</td>
+<td>将变量设为只读</td>
+</tr>
+<tr>
+<td>-i</td>
+<td>将变量设为整数</td>
+</tr>
+<tr>
+<td>-a</td>
+<td>将变量定义为数组</td>
+</tr>
+<tr>
+<td>-f</td>
+<td>显示此脚本前定义过的所有函数及内容</td>
+</tr>
+<tr>
+<td>-F</td>
+<td>仅显示此脚本前定义过的函数名</td>
+</tr>
+<tr>
+<td>-x</td>
+<td>将变量声明为环境变量</td>
+</tr>
+</tbody></table>
+<p>取消声明的变量</p>
+<ul>
+<li>declare +r</li>
+<li>declare +i</li>
+<li>declare +a</li>
+<li>declare +X</li>
+</ul>
+<h1 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h1><p><strong>例子1：</strong>将变量声明为只读</p>
+<blockquote>
+<p>➜  ~ declare -r var=&quot;hello&quot;<br>➜  ~ var=&quot;world&quot;<br>zsh: read-only variable: var</p>
+</blockquote>
+<p>var变量声明为只读变量，再次对变量赋值时会报错&quot;zsh: read-only variable: var&quot;。如果想要重新对var赋值，可以使用<code>declare +r var</code>对var变量取消只读声明。</p>
+<p><strong>例子2：</strong>声明变量为整型</p>
+<blockquote>
+<p>➜  ~ num1=2001<br>➜  ~ num2=$num1+1<br>➜  ~ echo $num2<br>2001+1</p>
+</blockquote>
+<p>如果直接为声明变量类型的话，默认按字符串处理。所以<code>$num1+1</code>输出的结果为&quot;2001+1&quot;。</p>
+<blockquote>
+<p>➜  ~ declare -i num2<br>➜  ~ num2=$num1+1<br>➜  ~ echo $num2<br>2002</p>
+</blockquote>
+<p>通过变量声明将num2声明为整型之后，输出预期结果&quot;2002&quot;。</p>
+<p><strong>例子3：</strong>在脚本中显示定义的函数和内容</p>
+<blockquote>
+<p>➜  ~ declare -f</p>
+</blockquote>
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">current_branch () &#123;</span><br><span class="line">	git_current_branch</span><br><span class="line">&#125;</span><br><span class="line">d () &#123;</span><br><span class="line">	if [[ -n $1 ]]</span><br><span class="line">	then</span><br><span class="line">		dirs &quot;$@&quot;</span><br><span class="line">	else</span><br><span class="line">		dirs -v | head -n 10</span><br><span class="line">	fi</span><br><span class="line">&#125;</span><br><span class="line">default () &#123;</span><br><span class="line">	(( $+parameters[$1] )) &amp;&amp; return 0</span><br><span class="line">	typeset -g &quot;$1&quot;=&quot;$2&quot; &amp;&amp; return 3</span><br><span class="line">&#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p><strong>例子4：</strong>在脚本中显示定义的函数（只显示函数名，不显示具体实现）。</p>
+<blockquote>
+<p>➜  ~ declare -F</p>
+</blockquote>
+<p>输出：</p>
+<blockquote>
+<p>current_branch<br>d<br>default<br>...</p>
+</blockquote>
+<p><strong>例子5：</strong>声明一个数组<br>定义一个数组array并初始化</p>
+<blockquote>
+<p>➜ ~ declare -a array<br>➜ ~ array=(&quot;jones&quot; &quot;mike&quot; &quot;kobe&quot; &quot;jordan&quot;)</p>
+</blockquote>
+<p>输出全部内容</p>
+<blockquote>
+<p>➜  ~ echo ${array[@]}<br>jones mike kobe jordan</p>
+</blockquote>
+<p>输出下标索引为1的内容</p>
+<blockquote>
+<p>➜  ~ echo ${array[1]}<br>jones</p>
+</blockquote>
+<p>获取数组元素个数</p>
+<blockquote>
+<p>➜  ~ echo $</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Shell学习笔记</category>
+      </categories>
+      <tags>
+        <tag>shell</tag>
+      </tags>
+  </entry>
 </search>
