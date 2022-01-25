@@ -284,6 +284,253 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://devhusky.github.io/2022/01/25/Shell%E5%8F%98%E9%87%8F%E7%9A%84%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95(%E5%85%AD)%E2%80%94%E2%80%94bash%E6%95%B0%E5%AD%A6%E8%BF%90%E7%AE%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="醜捌怪的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2022/01/25/Shell%E5%8F%98%E9%87%8F%E7%9A%84%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95(%E5%85%AD)%E2%80%94%E2%80%94bash%E6%95%B0%E5%AD%A6%E8%BF%90%E7%AE%97/" itemprop="url">Shell变量的高级用法(六)——bash数学运算</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-01-25T11:04:55+08:00">
+                2022-01-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Shell%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">Shell学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="语法格式"><a href="#语法格式" class="headerlink" title="语法格式"></a>语法格式</h1><table>
+<thead>
+<tr>
+<th></th>
+<th>语法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>方法一</td>
+<td>expr $num1 operator $num2</td>
+</tr>
+<tr>
+<td>方法二</td>
+<td>$(($num1 operator $num2))</td>
+</tr>
+</tbody></table>
+<h1 id="expr操作符对照表"><a href="#expr操作符对照表" class="headerlink" title="expr操作符对照表"></a>expr操作符对照表</h1><table>
+<thead>
+<tr>
+<th>操作符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>num1 | num2</td>
+<td>num1不为空且非0，返回num1；否则返回num2</td>
+</tr>
+<tr>
+<td>num1 &amp; num2</td>
+<td>num1不为空且非0，返回num1；否则返回0</td>
+</tr>
+<tr>
+<td>num1 &lt; num2</td>
+<td>num1小于num2，返回1；否则返回0</td>
+</tr>
+<tr>
+<td>num1 &lt;= num2</td>
+<td>num1小于等于num2，返回1；否则返回0</td>
+</tr>
+<tr>
+<td>num1 = num2</td>
+<td>num1等于num2，返回1；否则返回0</td>
+</tr>
+<tr>
+<td>num1 != num2</td>
+<td>num1不等于num2，返回1；否则返回0</td>
+</tr>
+<tr>
+<td>num1 &gt; num2</td>
+<td>num1大于num2，返回1；否则返回0</td>
+</tr>
+<tr>
+<td>num1 &gt;= num2</td>
+<td>num1大于等于num2，返回1；否则返回0</td>
+</tr>
+<tr>
+<td>num1 + num2</td>
+<td>求和</td>
+</tr>
+<tr>
+<td>num1 - num2</td>
+<td>求差</td>
+</tr>
+<tr>
+<td>num1 * num2</td>
+<td>求积</td>
+</tr>
+<tr>
+<td>num1 / num2</td>
+<td>求商</td>
+</tr>
+<tr>
+<td>num1 % num2</td>
+<td>求余</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>注意：  </p>
+<ul>
+<li>对于 |、&amp;、&lt;、&gt;、*等运算需要转义\  </li>
+<li>格式 expr&lt;空格&gt;&lt;操作数1&gt;&lt;空格&gt;&lt;运算符&gt;&lt;空格&gt;&lt;操作数2&gt;  </li>
+<li>只能用于整数运算  </li>
+</ul>
+</blockquote>
+<p>expr算术运算等价于$(())。示例如下：</p>
+<blockquote>
+<p>$((num1 | num2))<br>$((num1 &amp; num2))<br>$((num1 &lt; num2))<br>$((num1 &lt;= num2))<br>$((num1 == num2)) #注意、判断是否相等需要用==<br>......</p>
+</blockquote>
+<p>用$(())方式算术运算，运算符不需要转义。</p>
+<h1 id="bc运算器"><a href="#bc运算器" class="headerlink" title="bc运算器"></a>bc运算器</h1><ul>
+<li>bc是bash内建的运算器，支持浮点数运算。</li>
+<li>内建变量scale可以设置，默认为0。</li>
+</ul>
+<h1 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h1><p><strong>例子1：</strong>提示用户输入一个正整数num，然后计算1+2+3+...+num的值；必须对num是否为正整数做判断，不符合应该允许再次输入。</p>
+<p>代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">#</span><br><span class="line"></span><br><span class="line">while true</span><br><span class="line">do</span><br><span class="line">	read -p &quot;请输入一个正整数:&quot; num</span><br><span class="line">	#尝试做加法运算，如果运算成功，则说明是整数；否则不为整数。</span><br><span class="line">	#如果运算成功，则$?的值为0，否则不为0</span><br><span class="line">	expr $num + 1 &amp;&gt; /dev/null</span><br><span class="line">	if [ $? -eq 0 ]; then</span><br><span class="line">		#判断是否大于0</span><br><span class="line">		if [ `expr $num \&gt; 0` -eq 1 ]; then</span><br><span class="line">			sum=0</span><br><span class="line">			for((i=1; i&lt;=$num; i++))</span><br><span class="line">			do</span><br><span class="line">				sum=`expr $sum + $i`</span><br><span class="line">			done</span><br><span class="line">			echo &quot;1+2+3+...+$num=$sum&quot;</span><br><span class="line">			exit</span><br><span class="line">		fi</span><br><span class="line">	else</span><br><span class="line">		echo &quot;输入非法，请重新输入&quot;</span><br><span class="line">		continue</span><br><span class="line">	fi</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+<p><strong>例子2：</strong>不设置scale，默认为0。</p>
+<blockquote>
+<p>➜  ~ echo &quot;22+33&quot; | bc<br>55</p>
+</blockquote>
+<p><strong>例子3：</strong>设置scale小数点位数为2。</p>
+<blockquote>
+<p>➜  ~ echo &quot;scale=2;22.5/3.3&quot; | bc<br>6.81</p>
+</blockquote>
+<p>通过管道直接传给bc运算器。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://devhusky.github.io/2022/01/24/Shell%E5%8F%98%E9%87%8F%E7%9A%84%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95(%E4%BA%94)%E2%80%94%E2%80%94%E6%9C%89%E7%B1%BB%E5%9E%8B%E5%8F%98%E9%87%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1541,7 +1788,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
